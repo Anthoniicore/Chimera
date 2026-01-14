@@ -21,8 +21,8 @@ namespace Chimera {
         write_code_s(should_use_aim_assist_addr, nop);
 
         auto *aim_assist = get_chimera().get_signature("aim_assist_sig").data();
-        not_using_analog_movement_jmp = aim_assist + 0x2 + 0x6 + 0x36E;
-        yes_using_analog_movement_jmp = aim_assist + 0x2 + 0x6;
+        not_using_analog_movement_jmp = aim_assist + 0x2 + 0x6;
+        yes_using_analog_movement_jmp = aim_assist + 0x2 + 0x6 + 0x36E;
         static Hook hook;
         const void *old_fn;
         write_function_override(aim_assist, hook, reinterpret_cast<const void *>(on_aim_assist), &old_fn);
